@@ -1,8 +1,9 @@
+import LoginForm from "@/components/LoginForm";
 import { useAuth } from "@/context/auth";
 import { ActivityIndicator, Text, View } from "react-native";
 
 export default function Index() {
-  const { user, isLoading } = useAuth();
+  const { user, isLoading, signOut } = useAuth();
   console.log("isLoading", isLoading);
   if (isLoading) {
     return (
@@ -17,6 +18,11 @@ export default function Index() {
       </View>
     );
   }
+
+  if (!user) {
+    return <LoginForm />;
+  }
+
   return (
     <View
       style={{
@@ -26,6 +32,7 @@ export default function Index() {
       }}
     >
       <Text>User is:- {JSON.stringify(user)}</Text>
+      <Button title="Sign Out" onPress={() => signOut()} />
     </View>
   );
 }
