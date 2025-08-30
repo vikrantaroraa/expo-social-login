@@ -106,6 +106,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
           // save token to local storage
           tokenCache?.saveToken(TOKEN_KEY_NAME, accessToken);
+          console.log("Access token:-", accessToken);
           // get user info
           const decoded = jose.decodeJwt(accessToken);
           setUser(decoded as AuthUser);

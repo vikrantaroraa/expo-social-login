@@ -31,7 +31,9 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>User is:- {JSON.stringify(user)}</Text>
+      <Text>{user.sub}</Text>
+      <Text>{user.name}</Text>
+      <Text>{user.email}</Text>
       <Button title="Sign Out" onPress={signOut} />
     </View>
   );
