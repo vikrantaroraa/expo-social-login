@@ -1,4 +1,5 @@
-import { BASE_URL } from "@/app/constants";
+import { BASE_URL, TOKEN_KEY_NAME } from "@/app/constants";
+import { tokenCache } from "@/utils/cache";
 import {
   AuthError,
   AuthRequestConfig,
@@ -104,6 +105,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
           setAccessToken(accessToken);
 
           // save token to local storage
+          tokenCache?.saveToken(TOKEN_KEY_NAME, accessToken);
           // get user info
           const decoded = jose.decodeJwt(accessToken);
           setUser(decoded as AuthUser);

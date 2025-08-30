@@ -1,4 +1,5 @@
 // Authentication constants
+export const TOKEN_KEY_NAME = "accessToken";
 export const COOKIE_NAME = "auth_token";
 export const REFRESH_COOKIE_NAME = "refresh_token";
 export const COOKIE_MAX_AGE = 20; // 20 seconds
